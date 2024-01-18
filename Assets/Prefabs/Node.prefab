@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 8995108484577849820}
   - component: {fileID: 5969278031483951750}
   - component: {fileID: 7816365606540808409}
-  - component: {fileID: 6907121305069623212}
   m_Layer: 5
   m_Name: Node
   m_TagString: Untagged
@@ -166,21 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2062a499409788d49a5c0b0cf31c509b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deffendedTexture: {fileID: 3458996727367981254}
-  _attackedTexture: {fileID: 6488895611235059637}
-  _attackedPercentageText: {fileID: 6856611087542532468}
---- !u!114 &6907121305069623212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2923662599794197110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -212,19 +196,11 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5969278031483951750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7816365606540808409}
-        m_TargetAssemblyTypeName: Node, Assembly-CSharp
-        m_MethodName: IncreaseAttack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  _deffendedTexture: {fileID: 3458996727367981254}
+  _attackedTexture: {fileID: 6488895611235059637}
+  _attackedPercentageText: {fileID: 6856611087542532468}
+  _nodesInProximity: []
 --- !u!1 &4511077734533060932
 GameObject:
   m_ObjectHideFlags: 0

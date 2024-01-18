@@ -1,13 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
+using Models;
 using OmegaLeo.Toolbox.Attributes;
 using OmegaLeo.Toolbox.Runtime.Extensions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Node : MonoBehaviour
+public class Node : Button
 {
+    [ColoredHeader("Information")] 
+    public List<NodeStat> Stats = new List<NodeStat>()
+    {
+        new NodeStat(StatIdentifier.Mallware),
+        new NodeStat(StatIdentifier.Phishing),
+        new NodeStat(StatIdentifier.Authentication_Exploits),
+        new NodeStat(StatIdentifier.Code_Injection),
+        new NodeStat(StatIdentifier.Zombie_DDOS),
+        new NodeStat(StatIdentifier.Social_Engineering),
+    };
+    
     [ColoredHeader("Configurations")]
     [SerializeField] private Image _deffendedTexture;
     [SerializeField] private Image _attackedTexture;
@@ -66,5 +81,32 @@ public class Node : MonoBehaviour
 
         _attackedTexture.fillAmount = _attackedAmount;
         _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
+    }
+
+    public override void OnSelect(BaseEventData eventData)
+    {
+        RegionInfo.instance.Open(this);
+        base.OnSelect(eventData);
+    }
+
+    private void OnMouseOver()
+    {
+        RegionInfo.instance.Open(this);
+    }
+
+    private void OnMouseEnter()
+    {
+        RegionInfo.instance.Open(this);
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        RegionInfo.instance.Close();
+        base.OnDeselect(eventData);
+    }
+
+    private void OnMouseExit()
+    {
+        RegionInfo.instance.Close();
     }
 }

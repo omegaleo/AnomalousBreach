@@ -19,6 +19,8 @@ public class NodeManager : InstancedBehavior<NodeManager>
                 _nodes.Add(child.gameObject);
             }
         }
+        
+        _nodes.ForEach(x => x.GetComponent<Node>().Initialize());
     }
 
     public List<Vector3> GetNodePositions => _nodes.Select(x => x.transform.localPosition).ToList();

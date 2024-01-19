@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Models;
 using OmegaLeo.Toolbox.Attributes;
@@ -9,35 +10,69 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Node : Button
 {
-    [ColoredHeader("Information")] 
-    public List<NodeStat> Stats = new List<NodeStat>()
+    [ColoredHeader("Information")]
+    public List<Computer> ComputersInRegion = new List<Computer>();
+    
+    public List<NodeStat> Stats
     {
-        new NodeStat(StatIdentifier.Mallware),
-        new NodeStat(StatIdentifier.Phishing),
-        new NodeStat(StatIdentifier.Authentication_Exploits),
-        new NodeStat(StatIdentifier.Code_Injection),
-        new NodeStat(StatIdentifier.Zombie_DDOS),
-        new NodeStat(StatIdentifier.Social_Engineering),
-    };
+        get
+        {
+            var allNodeStats = ComputersInRegion.SelectMany(computer => computer.Stats).ToList();
+
+            var averageStatusByIdentifier = allNodeStats
+                .GroupBy(stat => stat.Identifier)
+                .Select(group => new
+                {
+                    Identifier = group.Key,
+                    AverageStatus = (StatStatus)Math.Round(group.Average(stat => (int)stat.Status))
+                })
+                .ToList();
+
+            return averageStatusByIdentifier.Select(x => new NodeStat(x.Identifier, x.AverageStatus)).ToList();
+        }
+    }
     
     [ColoredHeader("Configurations")]
     [SerializeField] private Image _deffendedTexture;
     [SerializeField] private Image _attackedTexture;
     [SerializeField] private TMP_Text _attackedPercentageText;
     [SerializeField] private List<Node> _nodesInProximity = new List<Node>();
-    
-    private float _attackedAmount = 0f;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private float _attackedAmount
     {
+        get
+        {
+            if (ComputersInRegion == null) return 0.0f;
+
+            var attackedMachines = ComputersInRegion.Count(x => x.Breached);
+            
+            return (float)attackedMachines / (float)ComputersInRegion.Count;
+        }
+    }
+
+    // Start is called before the first frame update
+    public void Initialize()
+    {
+        _nodesInProximity.Clear();
+        ComputersInRegion.Clear();
+        
         _deffendedTexture.color = GameManager.instance.GetDefendedColor();
         _attackedTexture.color = GameManager.instance.GetAttackedColor();
+
+        int amountOfComputers = Random.Range(200, 1000);
+        
+        for (int i = 0; i < amountOfComputers; i++)
+        {
+            ComputersInRegion.Add(new Computer());
+        }
         
         SetNodesInProximity();
+
+        StartCoroutine(UpdateText());
     }
 
     private void SetNodesInProximity()
@@ -72,15 +107,15 @@ public class Node : Button
             }
         }
     }
-
-    public void IncreaseAttack()
+    
+    private IEnumerator UpdateText()
     {
-        _attackedAmount += 0.25f;
-
-        if (_attackedAmount > 1f) _attackedAmount = 0f; // temporary for demo purposes
-
-        _attackedTexture.fillAmount = _attackedAmount;
-        _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
+        while (gameObject.activeSelf)
+        {
+            _attackedTexture.fillAmount = _attackedAmount;
+            _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     public override void OnSelect(BaseEventData eventData)

@@ -50,6 +50,7 @@
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Models\Computer.cs" />
     <Compile Include="Assets\Scripts\Models\NodeStat.cs" />
     <Compile Include="Assets\Scripts\Runtime\Node.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

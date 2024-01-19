@@ -1768,19 +1768,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Stats:
-  - Identifier: 3
-    Status: 1
-  - Identifier: 0
-    Status: 1
-  - Identifier: 2
-    Status: 1
-  - Identifier: 4
-    Status: 1
-  - Identifier: 5
-    Status: 1
-  - Identifier: 1
-    Status: 1
   ComputersInRegion: []
   _deffendedTexture: {fileID: 1278932428210879065}
   _attackedTexture: {fileID: 8913271669405820202}
@@ -2638,19 +2625,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Stats:
-  - Identifier: 3
-    Status: 1
-  - Identifier: 0
-    Status: 1
-  - Identifier: 2
-    Status: 1
-  - Identifier: 4
-    Status: 1
-  - Identifier: 5
-    Status: 1
-  - Identifier: 1
-    Status: 1
   ComputersInRegion: []
   _deffendedTexture: {fileID: 3458996725655243682}
   _attackedTexture: {fileID: 6488895610856117457}
@@ -2700,19 +2674,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Stats:
-  - Identifier: 3
-    Status: 1
-  - Identifier: 0
-    Status: 1
-  - Identifier: 2
-    Status: 1
-  - Identifier: 4
-    Status: 1
-  - Identifier: 5
-    Status: 1
-  - Identifier: 1
-    Status: 1
   ComputersInRegion: []
   _deffendedTexture: {fileID: 3458996726546155458}
   _attackedTexture: {fileID: 6488895610480351409}
@@ -2762,19 +2723,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Stats:
-  - Identifier: 3
-    Status: 1
-  - Identifier: 0
-    Status: 1
-  - Identifier: 2
-    Status: 1
-  - Identifier: 4
-    Status: 1
-  - Identifier: 5
-    Status: 1
-  - Identifier: 1
-    Status: 1
   ComputersInRegion: []
   _deffendedTexture: {fileID: 3458996726332875093}
   _attackedTexture: {fileID: 6488895610527120934}
@@ -2824,19 +2772,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  Stats:
-  - Identifier: 3
-    Status: 1
-  - Identifier: 0
-    Status: 1
-  - Identifier: 2
-    Status: 1
-  - Identifier: 4
-    Status: 1
-  - Identifier: 5
-    Status: 1
-  - Identifier: 1
-    Status: 1
   ComputersInRegion: []
   _deffendedTexture: {fileID: 3458996726438897853}
   _attackedTexture: {fileID: 6488895610574419918}

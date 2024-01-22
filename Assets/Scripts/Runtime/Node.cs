@@ -72,7 +72,7 @@ public class Node : Button
         
         SetNodesInProximity();
 
-        StartCoroutine(UpdateText());
+        UpdateText();
     }
 
     private void SetNodesInProximity()
@@ -107,15 +107,11 @@ public class Node : Button
             }
         }
     }
-    
-    private IEnumerator UpdateText()
+
+    private void UpdateText()
     {
-        while (gameObject.activeSelf)
-        {
-            _attackedTexture.fillAmount = _attackedAmount;
-            _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
-            yield return new WaitForSeconds(1f);
-        }
+        _attackedTexture.fillAmount = _attackedAmount;
+        _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
     }
 
     public override void OnSelect(BaseEventData eventData)
@@ -147,6 +143,19 @@ public class Node : Button
 
     public void Attack(StatIdentifier stat, float attackForce = .5f, int iteration = 0)
     {
+        StartCoroutine(PerformAttack(stat, attackForce));
+        
+        if (iteration == 0)
+        {
+            foreach (var nearbyNode in _nodesInProximity)
+            {
+                nearbyNode.Attack(stat, attackForce * 0.25f, iteration + 1); // Divide the force by 4 in nearby nodes
+            }
+        }
+    }
+
+    private IEnumerator PerformAttack(StatIdentifier stat,float attackForce)
+    {
         var computersToTarget = ComputersInRegion.Select(x => x.Stats.FirstOrDefault(y => y.Identifier == stat));
 
         foreach (var target in computersToTarget)
@@ -154,16 +163,8 @@ public class Node : Button
             if (target != null)
             {
                 target.Attack(attackForce);
-            }
-        }
-
-        StartCoroutine(UpdateText());
-
-        if (iteration == 0)
-        {
-            foreach (var nearbyNode in _nodesInProximity)
-            {
-                nearbyNode.Attack(stat, attackForce * 0.25f, iteration + 1); // Divide the force by 4 in nearby nodes
+                UpdateText();
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }

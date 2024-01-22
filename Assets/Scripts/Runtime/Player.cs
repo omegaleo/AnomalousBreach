@@ -63,7 +63,7 @@ public class Player : InstancedBehavior<Player>
                     break;
             }
             
-            yield return new WaitForSeconds(1f); // Wait 1 second before applying the attack/defense again
+            yield return new WaitForSeconds(10f); // Wait 10 seconds before applying the attack/defense again
         }
     }
 }

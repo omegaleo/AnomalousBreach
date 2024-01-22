@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OmegaLeo.Toolbox.Runtime.Models;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class NewsPanel : InstancedBehavior<NewsPanel>
 {
@@ -12,7 +13,7 @@ public class NewsPanel : InstancedBehavior<NewsPanel>
     private Vector3 _shownPosition;
     private Vector3 _hidePosition;
     private Animator _animator;
-    private bool _show;
+    public bool showing;
     
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class NewsPanel : InstancedBehavior<NewsPanel>
     // Update is called once per frame
     void Update()
     {
-        if (_show)
+        if (showing)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, _shownPosition, 0.125f);
         }
@@ -41,7 +42,7 @@ public class NewsPanel : InstancedBehavior<NewsPanel>
     public void Show(string text)
     {
         _texts.ForEach(x => x.text = text); // Change the text inside our text elements that loop around
-        _show = true;
+        showing = true;
         _animator.enabled = true;
 
         StartCoroutine(WaitToHide());
@@ -50,7 +51,7 @@ public class NewsPanel : InstancedBehavior<NewsPanel>
     private IEnumerator WaitToHide()
     {
         yield return new WaitForSeconds(_secondsToShow);
-        _show = false;
+        showing = false;
         _animator.enabled = false;
     }
 }

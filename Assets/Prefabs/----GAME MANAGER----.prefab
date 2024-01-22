@@ -45,10 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e160838527c6c4facd85019424d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _newsMessages:
+  - Ferret-Sourced Fertiliser Stocks Up
+  - Nuclear Reactors Linked to Hair Loss
+  - Funds available Near You. <color=blue>Click here</color>
+  - Legume Farmer Released from Jail
+  - Australian Worms for Sale
+  _minutesBetweenMessages: 1.5
   _attackedColor: {r: 0.6320754, g: 0, b: 0, a: 1}
   _defendedColor: {r: 0.08707775, g: 0, b: 0.6415094, a: 1}
   _attackedColorAlt: {r: 0.28298017, g: 0, b: 0.49056602, a: 1}
   _defendedColorAlt: {r: 0.5764706, g: 0.54176503, b: 0, a: 1}
+  WaitingForNextTurn: 1
+  CurrentTurn: 1
 --- !u!114 &8373070438231228628
 MonoBehaviour:
   m_ObjectHideFlags: 0

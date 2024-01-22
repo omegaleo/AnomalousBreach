@@ -51,6 +51,7 @@
     <Compile Include="Assets\Scripts\Runtime\RegionInfo.cs" />
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
+    <Compile Include="Assets\Scripts\Runtime\NewsPanel.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
     <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
     <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />

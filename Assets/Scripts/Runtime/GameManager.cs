@@ -24,6 +24,8 @@ public class GameManager : InstancedBehavior<GameManager>
     private void Start()
     {
         WaitingForNextTurn = true;
+        
+        NewsPanel.instance.Show("Local chat attempts to gnome famous streamer!");
     }
 
     #region Input Events

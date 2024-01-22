@@ -13,7 +13,7 @@ namespace Models
         [ColoredHeader("Information")] 
         public List<NodeStat> Stats = new List<NodeStat>()
         {
-            new NodeStat(StatIdentifier.Mallware),
+            new NodeStat(StatIdentifier.Malware),
             new NodeStat(StatIdentifier.Phishing),
             new NodeStat(StatIdentifier.Authentication_Exploits),
             new NodeStat(StatIdentifier.Code_Injection),

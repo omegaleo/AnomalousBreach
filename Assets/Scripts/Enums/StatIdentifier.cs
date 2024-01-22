@@ -5,7 +5,7 @@
         Phishing,
         Social_Engineering,
         Authentication_Exploits,
-        Mallware,
+        Malware,
         Code_Injection,
         Zombie_DDOS
     }

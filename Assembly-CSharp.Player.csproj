@@ -46,14 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enums\StatIdentifier.cs" />
+    <Compile Include="Assets\Scripts\Enums\PlayerSide.cs" />
+    <Compile Include="Assets\Scripts\Models\VectorProfficiency.cs" />
     <Compile Include="Assets\Scripts\Runtime\RegionInfo.cs" />
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
+    <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
+    <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameManager.cs" />
     <Compile Include="Assets\Scripts\Models\Computer.cs" />
     <Compile Include="Assets\Scripts\Models\NodeStat.cs" />
     <Compile Include="Assets\Scripts\Runtime\Node.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Player.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity 2022.3.17f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>
     </Reference>

@@ -46,14 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Enums\StatIdentifier.cs" />
+    <Compile Include="Assets\Scripts\Enums\PlayerSide.cs" />
+    <Compile Include="Assets\Scripts\Models\VectorProfficiency.cs" />
     <Compile Include="Assets\Scripts\Runtime\RegionInfo.cs" />
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
+    <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
+    <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameManager.cs" />
     <Compile Include="Assets\Scripts\Models\Computer.cs" />
     <Compile Include="Assets\Scripts\Models\NodeStat.cs" />
     <Compile Include="Assets\Scripts\Runtime\Node.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Player.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

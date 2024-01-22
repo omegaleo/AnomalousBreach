@@ -17,7 +17,15 @@ public class GameManager : InstancedBehavior<GameManager>
 
     public Color GetAttackedColor(bool alt = false) => (alt) ? _attackedColorAlt : _attackedColor;
     public Color GetDefendedColor(bool alt = false) => (alt) ? _defendedColorAlt : _defendedColor;
-    
+
+    public bool WaitingForNextTurn = true;
+    public int CurrentTurn = 1;
+
+    private void Start()
+    {
+        WaitingForNextTurn = true;
+    }
+
     #region Input Events
 
     public Action<InputAction.CallbackContext> OnMouseDrag;

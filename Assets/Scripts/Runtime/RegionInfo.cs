@@ -10,13 +10,19 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
 {
     [SerializeField] private GameObject _panel;
     [SerializeField] private TMP_Text _infoText;
+    [SerializeField] private GameObject _button;
 
     private bool CanOpen() => !_panel.activeSelf;
+    private Node _node;
 
     public void Open(Node node)
     {
         if (CanOpen())
         {
+            _node = node;
+            
+            _button.SetActive(GameManager.instance.WaitingForNextTurn);
+            
             var nodeRect = node.gameObject.GetComponent<RectTransform>().rect;
 
             var nodePosition = node.transform.localPosition;
@@ -40,6 +46,14 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
 
     public void Close()
     {
-        _panel.SetActive(false);
+        if (!GameManager.instance.WaitingForNextTurn)
+        {
+            _panel.SetActive(false);
+        }
+    }
+
+    public void SelectPlayerNode()
+    {
+        Player.instance.SetWorkingOnNode(_node);
     }
 }

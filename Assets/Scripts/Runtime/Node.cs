@@ -144,4 +144,27 @@ public class Node : Button
     {
         RegionInfo.instance.Close();
     }
+
+    public void Attack(StatIdentifier stat, float attackForce = .5f, int iteration = 0)
+    {
+        var computersToTarget = ComputersInRegion.Select(x => x.Stats.FirstOrDefault(y => y.Identifier == stat));
+
+        foreach (var target in computersToTarget)
+        {
+            if (target != null)
+            {
+                target.Attack(attackForce);
+            }
+        }
+
+        StartCoroutine(UpdateText());
+
+        if (iteration == 0)
+        {
+            foreach (var nearbyNode in _nodesInProximity)
+            {
+                nearbyNode.Attack(stat, attackForce * 0.25f, iteration + 1); // Divide the force by 4 in nearby nodes
+            }
+        }
+    }
 }

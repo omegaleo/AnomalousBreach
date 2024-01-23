@@ -45,6 +45,7 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.17f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Editor\UpgradeButtonEditor.cs" />
     <Compile Include="Assets\Scripts\Editor\NodeEditor.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity 2022.3.17f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

@@ -17,6 +17,8 @@ public class Player : InstancedBehavior<Player>
 
     // For now this will be used for both attacking and defending
     [SerializeField] private List<VectorProfficiency> _profficiencies = new List<VectorProfficiency>();
+
+    public int UpgradePoints = 0;
     
     private void Start()
     {
@@ -28,8 +30,8 @@ public class Player : InstancedBehavior<Player>
         }
     }
 
-    public void LevelUpProfficiency(StatIdentifier identifier) =>
-        _profficiencies.FirstOrDefault(x => x.Identifier == identifier)!.Level++;
+    public void LevelUpProfficiency(StatIdentifier identifier, int increase = 1) =>
+        _profficiencies.FirstOrDefault(x => x.Identifier == identifier)!.Level += increase;
     
     public void SetWorkingOnNode(Node node)
     {

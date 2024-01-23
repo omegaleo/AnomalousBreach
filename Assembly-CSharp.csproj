@@ -56,7 +56,9 @@
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
     <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
     <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />
+    <Compile Include="Assets\Scripts\UI\UpgradeWindow.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Runtime\CameraToCanvas.cs" />
     <Compile Include="Assets\Scripts\Models\Computer.cs" />
     <Compile Include="Assets\Scripts\Models\NodeStat.cs" />
     <Compile Include="Assets\Scripts\Runtime\Node.cs" />

@@ -30,7 +30,7 @@ namespace Models
                     // Check if the attack hits or misses based on missChance
                     if (randomValue > .75f)
                     {
-                        Health -= attackForce * 0.125f;
+                        Health -= attackForce /* * 0.125f // disabled for now since it was taking too long to attack normal computers */;
                     }
                     break;
                 case StatStatus.Vulnerable:

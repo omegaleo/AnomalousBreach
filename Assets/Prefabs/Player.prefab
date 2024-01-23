@@ -53,6 +53,7 @@ MonoBehaviour:
   Side: 0
   _workingOn: {fileID: 0}
   _profficiencies: []
+  UpgradePoints: 1
 --- !u!1 &5002809965472271135
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,6 +31,8 @@ namespace UI
         
         public void Claim()
         {
+            if (_claimed) return;
+            
             if (Player.instance.UpgradePoints >= _cost)
             {
                 Player.instance.LevelUpProfficiency(_attackVector, _increase);
@@ -41,6 +43,8 @@ namespace UI
                 {
                     _unlockNext.ForEach(x => x.Unlock());
                 }
+
+                image.color = colors.pressedColor;
             }
         }
     }

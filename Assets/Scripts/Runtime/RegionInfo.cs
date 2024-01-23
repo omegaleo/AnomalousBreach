@@ -13,6 +13,8 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
     [SerializeField] private GameObject _button;
 
     private bool CanOpen() => !_panel.activeSelf;
+    public bool IsOpen() => _panel.activeSelf;
+    
     private Node _node;
 
     public void Open(Node node)
@@ -32,15 +34,21 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
             var infoPosition = new Vector3(nodePosition.x + nodeRect.width + (rect.width / 2), nodePosition.y, nodePosition.z);
 
             _panel.transform.localPosition = infoPosition;
+            
+            _panel.SetActive(true);
+        }
+    }
 
-            _infoText.text = $"<size=24>{node.name}</size>{Environment.NewLine}Breached Machines: {node.ComputersInRegion.Count(x => x.Breached)}/{node.ComputersInRegion.Count}{Environment.NewLine}";
+    private void Update()
+    {
+        if (IsOpen())
+        {
+            _infoText.text = $"<size=24>{_node.name}</size>{Environment.NewLine}Breached Machines: {_node.ComputersInRegion.Count(x => x.Breached)}/{_node.ComputersInRegion.Count}{Environment.NewLine}";
 
-            foreach (var stat in node.Stats)
+            foreach (var stat in _node.Stats)
             {
                 _infoText.text += stat.ToString() + Environment.NewLine;
             }
-            
-            _panel.SetActive(true);
         }
     }
 

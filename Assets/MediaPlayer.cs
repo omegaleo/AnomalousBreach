@@ -68,21 +68,14 @@ public class MediaPlayer : MonoBehaviour
     {
         //reset timer
         m_trackTimer = 0;
-        if (m_PlayedTracks>=m_tracks.Length)
-        {
-
-        }
-        else
-        {
             //Change song to next track based on shuffle
             m_AudioSource.clip = m_tracks[m_trackPicked];
             //play the next song
             m_AudioSource.Play();
             //Store song played in the playlist
             m_played[m_PlayedTracks] = m_trackPicked;
+            m_beenPlayed[m_trackPicked] = true;
             m_PlayedTracks++;
-        }
-       
     }
 
     public void PreviousTrack()
@@ -155,5 +148,10 @@ public class MediaPlayer : MonoBehaviour
         }
 
             return m_randomselection;
+    }
+
+    public void ClickNextTrack()
+    {
+        NextTrack(RandomTrack());
     }
 }

@@ -17,4 +17,6 @@ public class DebugPanel : MonoBehaviour
     public void LevelUpAuthExploits() => Player.instance.LevelUpProfficiency(StatIdentifier.Authentication_Exploits);
     public void LevelUpCodeInjection() => Player.instance.LevelUpProfficiency(StatIdentifier.Code_Injection);
     public void LevelUpZombieDDOS() => Player.instance.LevelUpProfficiency(StatIdentifier.Zombie_DDOS);
+
+    public void IncreaseUpgradePoints() => Player.instance.UpgradePoints += 99;
 }

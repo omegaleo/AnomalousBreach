@@ -22,6 +22,7 @@ namespace Models
         };
         
         public bool Breached => Stats.Any(x => x.Status == StatStatus.Exploited);
+        public bool Defended => Stats.TrueForAll(x => x.Status == StatStatus.Deffended);
 
         public Computer()
         {

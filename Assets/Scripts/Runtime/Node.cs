@@ -168,4 +168,33 @@ public class Node : Button
             }
         }
     }
+    
+    
+    public void Defense(StatIdentifier stat, float defenseForce = .5f, int iteration = 0)
+    {
+        StartCoroutine(PerformDefense(stat, defenseForce));
+        
+        if (iteration == 0)
+        {
+            foreach (var nearbyNode in _nodesInProximity)
+            {
+                nearbyNode.Defense(stat, defenseForce * 0.25f, iteration + 1); // Divide the force by 4 in nearby nodes
+            }
+        }
+    }
+
+    private IEnumerator PerformDefense(StatIdentifier stat,float defenseForce)
+    {
+        var computersToTarget = ComputersInRegion.Select(x => x.Stats.FirstOrDefault(y => y.Identifier == stat));
+
+        foreach (var target in computersToTarget)
+        {
+            if (target != null)
+            {
+                target.Defend(defenseForce);
+                UpdateText();
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+    }
 }

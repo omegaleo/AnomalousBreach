@@ -61,7 +61,10 @@ public class Player : InstancedBehavior<Player>
                     }
                     break;
                 case PlayerSide.Defend:
-
+                    foreach (var profficiency in profficientStats)
+                    {
+                        _workingOn.Defense(profficiency.Identifier, profficiency.Level * 0.125f);
+                    }
                     break;
             }
             

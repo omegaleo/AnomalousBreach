@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -18,6 +20,7 @@ public class MediaPlayer : MonoBehaviour
     private int m_lastTrack;
     private int m_randomNumber;
     private int m_randomselection;
+    private int m_TrackCount;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,8 @@ public class MediaPlayer : MonoBehaviour
             NextTrack(RandomTrack());
         }
         //Zero tracks play on load
-        m_PlayedTracks = 0;
+        m_PlayedTracks = 1;
+        m_TrackCount =m_tracks.Length;
 
     }
 
@@ -65,7 +69,7 @@ public class MediaPlayer : MonoBehaviour
     }
 
     public void NextTrack(int m_trackPicked)
-    {
+    {         
         //reset timer
         m_trackTimer = 0;
             //Change song to next track based on shuffle
@@ -74,17 +78,25 @@ public class MediaPlayer : MonoBehaviour
             m_AudioSource.Play();
             //Store song played in the playlist
             m_played[m_PlayedTracks] = m_trackPicked;
-            m_beenPlayed[m_trackPicked] = true;
-            m_PlayedTracks++;
+ 
+        m_PlayedTracks++;
+        if (m_PlayedTracks == m_tracks.Length)
+        {
+            for (int i = 0; i < m_tracks.Length; i++)
+            {
+                m_beenPlayed[i] = false;
+            }
+            m_PlayedTracks = 1;
+        }
+        m_beenPlayed[m_trackPicked] = true;
     }
 
     public void PreviousTrack()
     {
         //If this is the first track in the playlist
-        if (m_PlayedTracks <= 0)
+        if (m_PlayedTracks <= 1)
         {
             //Make sure that Played tracks doesn't go negative
-            m_PlayedTracks = 0;
             //Play any random song as none have been played before in this list
             m_AudioSource.clip = m_tracks[UnityEngine.Random.Range(0, m_tracks.Length)];
         }
@@ -131,12 +143,9 @@ public class MediaPlayer : MonoBehaviour
 
     public int RandomTrack()
     {
-        if (m_PlayedTracks==m_tracks.Length)
-        {
-            ClearArrays();
-        }
+       
         //Generate a random number
-        m_randomNumber = UnityEngine.Random.Range(0, m_tracks.Length);
+        m_randomNumber = UnityEngine.Random.Range(0, m_TrackCount);
         //check if that number has been used before in 
         if (m_beenPlayed[m_randomNumber]==true)
         {

@@ -51,6 +51,7 @@
     <Compile Include="Assets\Scripts\Enums\PlayerSide.cs" />
     <Compile Include="Assets\Scripts\Models\VectorProfficiency.cs" />
     <Compile Include="Assets\Scripts\UI\SideSelector.cs" />
+    <Compile Include="Assets\Scripts\UI\ShutdownButton.cs" />
     <Compile Include="Assets\Scripts\Runtime\RegionInfo.cs" />
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
     <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />
     <Compile Include="Assets\Scripts\UI\UpgradeWindow.cs" />
+    <Compile Include="Assets\Scripts\UI\CustomButton.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Titlescreen.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\CameraToCanvas.cs" />
     <Compile Include="Assets\Scripts\Models\Computer.cs" />

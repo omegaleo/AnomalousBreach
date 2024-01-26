@@ -80,7 +80,7 @@ public class MediaPlayer : MonoBehaviour
             m_played[m_PlayedTracks] = m_trackPicked;
  
         m_PlayedTracks++;
-        if (m_PlayedTracks == m_tracks.Length)
+        if (m_PlayedTracks >= m_tracks.Length)
         {
             for (int i = 0; i < m_tracks.Length; i++)
             {
@@ -120,13 +120,23 @@ public class MediaPlayer : MonoBehaviour
             m_songPaused = true;
             m_AudioSource.Pause();
         }
-            
+        else if (!m_AudioSource.isPlaying)
+        {
+            m_songPaused = false;
+            m_AudioSource.UnPause();
+        }
+
     }
 
     public void ResumeTrack()
     {
-        //Set user pause flag to false and unpause song
-        if (!m_AudioSource.isPlaying)
+        if (m_AudioSource.isPlaying)
+        {
+            //Set user pause flag to true and pause song
+            m_songPaused = true;
+            m_AudioSource.Pause();
+        }
+        else if (!m_AudioSource.isPlaying)
         {
             m_songPaused = false;
             m_AudioSource.UnPause();
@@ -162,5 +172,10 @@ public class MediaPlayer : MonoBehaviour
     public void ClickNextTrack()
     {
         NextTrack(RandomTrack());
+        if (!m_AudioSource.isPlaying)
+        {
+            m_songPaused = false;
+            m_AudioSource.UnPause();
+        }
     }
 }

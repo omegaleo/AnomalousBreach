@@ -568,7 +568,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: CROSS_PLATFORM_INPUT;DISABLESTEAMWORKS;ITCH_BUILD
+    Standalone: CROSS_PLATFORM_INPUT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

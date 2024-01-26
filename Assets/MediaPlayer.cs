@@ -133,6 +133,7 @@ public class MediaPlayer : MonoBehaviour
 
     public void ResumeTrack()
     {
+        AudioManager.instance.Play("Click");
         if (m_AudioSource.isPlaying)
         {
             //Set user pause flag to true and pause song
@@ -176,6 +177,7 @@ public class MediaPlayer : MonoBehaviour
 
     public void ClickNextTrack()
     {
+        AudioManager.instance.Play("Click");
         NextTrack(RandomTrack());
         if (!m_AudioSource.isPlaying)
         {

@@ -35,6 +35,7 @@ namespace UI
             
             if (Player.instance.UpgradePoints >= _cost)
             {
+                AudioManager.instance.Play("Click");
                 Player.instance.LevelUpProfficiency(_attackVector, _increase);
                 Player.instance.UpgradePoints -= _cost;
                 _claimed = true;
@@ -45,6 +46,10 @@ namespace UI
                 }
 
                 image.color = colors.pressedColor;
+            }
+            else
+            {
+                AudioManager.instance.Play("Error");
             }
         }
     }

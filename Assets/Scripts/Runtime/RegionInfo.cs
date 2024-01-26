@@ -59,6 +59,7 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
 
     public void SelectPlayerNode()
     {
+        AudioManager.instance.Play("Click");
         Player.instance.SetWorkingOnNode(_node);
     }
 }

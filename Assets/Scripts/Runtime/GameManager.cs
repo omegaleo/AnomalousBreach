@@ -110,7 +110,7 @@ public class GameManager : InstancedBehavior<GameManager>
         if (CurrentTurn < MaxWaves)
         {
             Player.instance.UpgradePoints += 2; // TODO: Change this
-            
+            AudioManager.instance.Play("Alert");
             WaitingForNextTurn = true;
         }
         else

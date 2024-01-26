@@ -19,11 +19,13 @@ public class Titlescreen : MonoBehaviour
 
     public void Play()
     {
+        AudioManager.instance.Play("Click");
         SceneManager.LoadScene(_gameScene);
     }
 
     public void ExitGame()
     {
+        AudioManager.instance.Play("Click");
         Application.Quit();
     }
 }

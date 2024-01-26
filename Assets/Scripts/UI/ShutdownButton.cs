@@ -8,6 +8,7 @@ public class ShutdownButton : MonoBehaviour
 {
     public void Shutdown()
     {
+        AudioManager.instance.Play("Shutdown");
         SceneManager.LoadScene(0);
     }
 }

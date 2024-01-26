@@ -42,6 +42,8 @@ public class Node : Button
     [SerializeField] private TMP_Text _attackedPercentageText;
     [SerializeField] private List<Node> _nodesInProximity = new List<Node>();
 
+    private bool _sfxPlayed = false;
+    
     private float _attackedAmount
     {
         get
@@ -121,11 +123,16 @@ public class Node : Button
             }
         }
     }
-
+    
     private void UpdateText()
     {
         _attackedTexture.fillAmount = _attackedAmount;
         _attackedPercentageText.text = $"{GetAttackedPercentage()}%";
+
+        if (GetAttackedPercentage() > 100 && !_sfxPlayed)
+        {
+            AudioManager.instance.Play("NodeDeath");
+        }
     }
 
     public float GetAttackedPercentage()
@@ -141,6 +148,7 @@ public class Node : Button
     public override void OnSelect(BaseEventData eventData)
     {
         RegionInfo.instance.Open(this);
+        AudioManager.instance.Play("Click");
         base.OnSelect(eventData);
     }
 

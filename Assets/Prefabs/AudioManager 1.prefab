@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8838770857834024677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2670595220881239823}
+  - component: {fileID: 80709809379223876}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2670595220881239823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838770857834024677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80709809379223876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838770857834024677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9007a3ead6febca4c8585ff4bd381d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Click
+    clip: {fileID: 8300000, guid: 49671973539cb184499c2fb82540a1cb, type: 3}
+    volume: 0.796
+    pitch: 0.877
+    source: {fileID: 0}
+  - name: NodeDeath
+    clip: {fileID: 8300000, guid: 6048084af66efed4ab93b4ac550a975a, type: 3}
+    volume: 0.782
+    pitch: 1.056
+    source: {fileID: 0}
+  - name: Error
+    clip: {fileID: 8300000, guid: 1472e79ca609b1a43922711513e195a7, type: 3}
+    volume: 0.782
+    pitch: 1.056
+    source: {fileID: 0}
+  - name: Shutdown
+    clip: {fileID: 8300000, guid: 5367aa978bc86d74aa93459f915b13fc, type: 3}
+    volume: 0.782
+    pitch: 1.056
+    source: {fileID: 0}
+  - name: Alert
+    clip: {fileID: 8300000, guid: 44f5ac2b66b3f144bae60d30fe071969, type: 3}
+    volume: 0.782
+    pitch: 1.056
+    source: {fileID: 0}

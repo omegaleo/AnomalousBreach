@@ -58,6 +58,7 @@
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\NewsPanel.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
+    <Compile Include="Assets\MediaPlayer.cs" />
     <Compile Include="Assets\Scripts\Runtime\Enemy.cs" />
     <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
     <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -21,6 +22,8 @@ public class MediaPlayer : MonoBehaviour
     private int m_randomNumber;
     private int m_randomselection;
     private int m_TrackCount;
+
+    [SerializeField] private TMP_Text _playBtnText;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +58,7 @@ public class MediaPlayer : MonoBehaviour
             NextTrack(RandomTrack());
         }
         //If the song has ended and the user hasn't paused, play another track
-        else if (m_songPaused == false && m_trackTimer>=m_AudioSource.clip.length)
+        else if (m_songPaused == false && (m_AudioSource.clip != null && m_trackTimer>=m_AudioSource.clip.length))
         {
             NextTrack(RandomTrack());
         }
@@ -135,11 +138,13 @@ public class MediaPlayer : MonoBehaviour
             //Set user pause flag to true and pause song
             m_songPaused = true;
             m_AudioSource.Pause();
+            _playBtnText.text = "Play";
         }
         else if (!m_AudioSource.isPlaying)
         {
             m_songPaused = false;
             m_AudioSource.UnPause();
+            _playBtnText.text = "Pause";
         }
     }
 

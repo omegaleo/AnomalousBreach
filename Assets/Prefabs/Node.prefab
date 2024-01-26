@@ -197,6 +197,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  ComputersInRegion: []
   _deffendedTexture: {fileID: 3458996727367981254}
   _attackedTexture: {fileID: 6488895611235059637}
   _attackedPercentageText: {fileID: 6856611087542532468}
@@ -268,8 +269,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0%
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
+  m_sharedMaterial: {fileID: -6651771718152286052, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

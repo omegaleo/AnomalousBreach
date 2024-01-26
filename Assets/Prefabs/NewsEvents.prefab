@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NEWS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
+  m_sharedMaterial: {fileID: -6651771718152286052, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -251,6 +251,7 @@ MonoBehaviour:
   - {fileID: 927274694649307946}
   - {fileID: 6931275378278670396}
   _secondsToShow: 28
+  showing: 0
 --- !u!1 &6221205748009403913
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,8 +319,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Local chat attempts to gnome famous streamer.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
+  m_sharedMaterial: {fileID: -6651771718152286052, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -452,8 +453,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Local chat attempts to gnome famous streamer.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
+  m_sharedMaterial: {fileID: -6651771718152286052, guid: 619eb93ff4fc14f41a74c83fe4acaa8e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

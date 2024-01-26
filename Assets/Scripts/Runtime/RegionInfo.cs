@@ -19,24 +19,19 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
 
     public void Open(Node node)
     {
-        if (CanOpen())
-        {
-            _node = node;
+        _node = node;
             
-            _button.SetActive(GameManager.instance.WaitingForNextTurn);
-            
-            var nodeRect = node.gameObject.GetComponent<RectTransform>().rect;
+        var nodeRect = node.gameObject.GetComponent<RectTransform>().rect;
 
-            var nodePosition = node.transform.localPosition;
+        var nodePosition = node.transform.localPosition;
             
-            var rect = gameObject.GetComponent<RectTransform>().rect;
+        var rect = gameObject.GetComponent<RectTransform>().rect;
 
-            var infoPosition = new Vector3(nodePosition.x + nodeRect.width + (rect.width / 2), nodePosition.y, nodePosition.z);
+        var infoPosition = new Vector3(nodePosition.x + nodeRect.width + (rect.width / 2), nodePosition.y, nodePosition.z);
 
-            _panel.transform.localPosition = infoPosition;
+        _panel.transform.localPosition = infoPosition;
             
-            _panel.SetActive(true);
-        }
+        _panel.SetActive(true);
     }
 
     private void Update()
@@ -49,6 +44,8 @@ public class RegionInfo : InstancedBehavior<RegionInfo>
             {
                 _infoText.text += stat.ToString() + Environment.NewLine;
             }
+            
+            _button.SetActive(GameManager.instance.WaitingForNextTurn);
         }
     }
 

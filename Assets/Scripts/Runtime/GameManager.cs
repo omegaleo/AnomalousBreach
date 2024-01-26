@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Enums;
 using OmegaLeo.Toolbox.Attributes;
 using OmegaLeo.Toolbox.Runtime.Extensions;
 using OmegaLeo.Toolbox.Runtime.Models;
@@ -16,6 +18,7 @@ public class GameManager : InstancedBehavior<GameManager>
     [SerializeField] private Transform _enemyParent;
     [SerializeField] private float _secondsPerWave = 60f;
     public int MaxWaves = 10;
+    private List<Enemy> _enemies = new List<Enemy>();
     
     [ColoredHeader("News")]
     [SerializeField] private List<string> _newsMessages = new List<string>();
@@ -52,14 +55,33 @@ public class GameManager : InstancedBehavior<GameManager>
         CurrentTurn++;
         _enemyParent.DestroyChildren();
 
-        var numberToSpawn = Random.Range(1, 3);
-
+        var turnBoost = Mathf.RoundToInt(CurrentTurn * 0.25f);
+        
         var nodes = NodeManager.instance.GetNodes();
+        
+        var numberToSpawn = Random.Range(1 + turnBoost, Mathf.Clamp(3 + turnBoost, 3, nodes.Count));
+        
+        _enemies.Clear();
         
         for (int i = 0; i < numberToSpawn; i++)
         {
             var enemy = Instantiate(_enemyPrefab, _enemyParent);
-            enemy.GetComponent<Enemy>().SetWorkingOnNode(nodes.Random().GetComponent<Node>());
+
+            var workingOnNode = nodes
+                .Where(x => _enemies
+                    .TrueForAll(y =>
+                        y.GetWorkingOnNode().gameObject != x)
+                )
+                .ToList()
+                .Random()!
+                .GetComponent<Node>();
+
+            if (workingOnNode != null)
+            {
+                enemy.GetComponent<Enemy>().SetWorkingOnNode(workingOnNode);
+            }
+            
+            _enemies.Add(enemy.GetComponent<Enemy>());
         }
 
         StartCoroutine(CountdownToNextTurn());
@@ -75,8 +97,20 @@ public class GameManager : InstancedBehavior<GameManager>
             yield return new WaitForSeconds(1f);
         }
 
+        Player.instance.StopAllCoroutines();
+        _enemies.ForEach(x => x.StopAllCoroutines());
+        
+        var nodes = NodeManager.instance.GetNodes().Select(x => x.GetComponent<Node>());
+
+        if (nodes.Count(x => x.TakenOver) == nodes.Count())
+        {
+            // Handle End of Game
+        }
+        
         if (CurrentTurn < MaxWaves)
         {
+            Player.instance.UpgradePoints += 2; // TODO: Change this
+            
             WaitingForNextTurn = true;
         }
         else

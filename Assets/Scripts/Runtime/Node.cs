@@ -54,6 +54,20 @@ public class Node : Button
         }
     }
 
+    private float _deffendedAmount
+    {
+        get
+        {
+            if (ComputersInRegion == null) return 0.0f;
+
+            var defendedMachines = ComputersInRegion.Count(x => x.Defended);
+            
+            return (float)defendedMachines / (float)ComputersInRegion.Count;
+        }
+    }
+
+    public bool TakenOver => _attackedAmount == 1f;
+    
     // Start is called before the first frame update
     public void Initialize()
     {
@@ -111,7 +125,17 @@ public class Node : Button
     private void UpdateText()
     {
         _attackedTexture.fillAmount = _attackedAmount;
-        _attackedPercentageText.text = $"{(_attackedAmount * 100f).RoundToInt()}%";
+        _attackedPercentageText.text = $"{GetAttackedPercentage()}%";
+    }
+
+    public float GetAttackedPercentage()
+    {
+        return (_attackedAmount * 100f).RoundToInt();
+    }
+
+    public float GetDeffendedPercentage()
+    {
+        return (_deffendedAmount * 100f).RoundToInt();
     }
 
     public override void OnSelect(BaseEventData eventData)
@@ -160,6 +184,12 @@ public class Node : Button
 
         foreach (var target in computersToTarget)
         {
+            if (GameManager.instance.WaitingForNextTurn)
+            {
+                StopAllCoroutines();
+                break;
+            }
+            
             if (target != null)
             {
                 target.Attack(attackForce);
@@ -189,6 +219,12 @@ public class Node : Button
 
         foreach (var target in computersToTarget)
         {
+            if (GameManager.instance.WaitingForNextTurn)
+            {
+                StopAllCoroutines();
+                break;
+            }
+            
             if (target != null)
             {
                 target.Defend(defenseForce);

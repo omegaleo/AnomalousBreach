@@ -19,7 +19,7 @@ public class TurnText : MonoBehaviour
     {
         if (GameManager.instance.WaitingForNextTurn)
         {
-            _text.text = "Waiting for next wave. Please select a node in order to continue.";
+            _text.text = $"Waiting for next wave.{Environment.NewLine}Please select a node in order to continue.";
         }
         else
         {

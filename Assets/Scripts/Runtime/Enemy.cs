@@ -24,10 +24,12 @@ public class Enemy : MonoBehaviour
     {
         var identifiers = Enum.GetValues(typeof(StatIdentifier));
         Side = (Player.instance.Side == PlayerSide.Attack) ? PlayerSide.Defend : PlayerSide.Attack;
+
+        var turnBoost = Mathf.RoundToInt(GameManager.instance.CurrentTurn * 0.25f);
         
         foreach (var identifier in identifiers)
         {
-            var level = UnityEngine.Random.Range(0, 2);
+            var level = UnityEngine.Random.Range(1, 1 + turnBoost);
             _profficiencies.Add(new VectorProfficiency((StatIdentifier)identifier, level));
         }
 
@@ -74,4 +76,6 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(10f); // Wait 10 seconds before applying the attack/defense again
         }
     }
+
+    public Node GetWorkingOnNode() => _workingOn;
 }

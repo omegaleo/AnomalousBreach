@@ -30,6 +30,12 @@ public class Player : InstancedBehavior<Player>
         }
     }
 
+    public void SetSide(PlayerSide side)
+    {
+        Side = side;
+        UpgradePoints = (Side == PlayerSide.Attack) ? 1 : 5;
+    }
+
     public void LevelUpProfficiency(StatIdentifier identifier, int increase = 1) =>
         _profficiencies.FirstOrDefault(x => x.Identifier == identifier)!.Level += increase;
     
@@ -56,6 +62,8 @@ public class Player : InstancedBehavior<Player>
     {
         while (!GameManager.instance.WaitingForNextTurn)
         {
+            if (GameManager.instance.WaitingForNextTurn) break;
+            
             var profficientStats = _profficiencies.Where(x => x.Level > 0);
             
             switch (Side)
@@ -63,13 +71,13 @@ public class Player : InstancedBehavior<Player>
                 case PlayerSide.Attack:
                     foreach (var profficiency in profficientStats)
                     {
-                        _workingOn.Attack(profficiency.Identifier, profficiency.Level * 0.125f);
+                        _workingOn.Attack(profficiency.Identifier, profficiency.Level /* * 0.125f*/);
                     }
                     break;
                 case PlayerSide.Defend:
                     foreach (var profficiency in profficientStats)
                     {
-                        _workingOn.Defense(profficiency.Identifier, profficiency.Level * 0.125f);
+                        _workingOn.Defense(profficiency.Identifier, profficiency.Level /* * 0.125f */);
                     }
                     break;
             }

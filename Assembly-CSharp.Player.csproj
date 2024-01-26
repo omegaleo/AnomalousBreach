@@ -50,6 +50,7 @@
     <Compile Include="Assets\Scripts\Enums\StatIdentifier.cs" />
     <Compile Include="Assets\Scripts\Enums\PlayerSide.cs" />
     <Compile Include="Assets\Scripts\Models\VectorProfficiency.cs" />
+    <Compile Include="Assets\Scripts\UI\SideSelector.cs" />
     <Compile Include="Assets\Scripts\Runtime\RegionInfo.cs" />
     <Compile Include="Assets\Scripts\Enums\StatStatus.cs" />
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />

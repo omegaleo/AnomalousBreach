@@ -6,9 +6,17 @@ using OmegaLeo.Toolbox.Runtime.Extensions;
 using OmegaLeo.Toolbox.Runtime.Models;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class GameManager : InstancedBehavior<GameManager>
 {
+    [ColoredHeader("Waves Related")]
+    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private Transform _enemyParent;
+    [SerializeField] private float _secondsPerWave = 60f;
+    public int MaxWaves = 10;
+    
     [ColoredHeader("News")]
     [SerializeField] private List<string> _newsMessages = new List<string>();
 
@@ -25,13 +33,56 @@ public class GameManager : InstancedBehavior<GameManager>
     public Color GetDefendedColor(bool alt = false) => (alt) ? _defendedColorAlt : _defendedColor;
 
     public bool WaitingForNextTurn = true;
-    public int CurrentTurn = 1;
+    public float SecondsLeft = 0f;
+    public int CurrentTurn = 0;
     
     private void Start()
     {
         WaitingForNextTurn = true;
 
         StartCoroutine(HandleMessages());
+    }
+
+    public void NextTurn()
+    {
+        if (!WaitingForNextTurn) return;
+        
+        WaitingForNextTurn = false;
+        
+        CurrentTurn++;
+        _enemyParent.DestroyChildren();
+
+        var numberToSpawn = Random.Range(1, 3);
+
+        var nodes = NodeManager.instance.GetNodes();
+        
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            var enemy = Instantiate(_enemyPrefab, _enemyParent);
+            enemy.GetComponent<Enemy>().SetWorkingOnNode(nodes.Random().GetComponent<Node>());
+        }
+
+        StartCoroutine(CountdownToNextTurn());
+    }
+
+    private IEnumerator CountdownToNextTurn()
+    {
+        SecondsLeft = _secondsPerWave;
+
+        while (SecondsLeft > 0f)
+        {
+            SecondsLeft -= 1f;
+            yield return new WaitForSeconds(1f);
+        }
+
+        if (CurrentTurn < MaxWaves)
+        {
+            WaitingForNextTurn = true;
+        }
+        else
+        {
+            // Handle End of Game
+        }
     }
 
     private IEnumerator HandleMessages()

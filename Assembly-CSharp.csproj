@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\UpgradeButton.cs" />
+    <Compile Include="Assets\Scripts\UI\TurnText.cs" />
     <Compile Include="Assets\Scripts\Enums\StatIdentifier.cs" />
     <Compile Include="Assets\Scripts\Enums\PlayerSide.cs" />
     <Compile Include="Assets\Scripts\Models\VectorProfficiency.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Assets\Scripts\Runtime\NodeManager.cs" />
     <Compile Include="Assets\Scripts\Runtime\NewsPanel.cs" />
     <Compile Include="Assets\Scripts\Runtime\GameCamera.cs" />
+    <Compile Include="Assets\Scripts\Runtime\Enemy.cs" />
     <Compile Include="Assets\Scripts\Runtime\DebugPanel.cs" />
     <Compile Include="Assets\Scripts\Constants\GameConstants.cs" />
     <Compile Include="Assets\Scripts\UI\UpgradeWindow.cs" />

@@ -63,6 +63,11 @@ namespace Models
                     }
                     break;
                 case StatStatus.Normal:
+                    if (Health < 5f)
+                    {
+                        Health += 0.1f;
+                    }
+                    
                     Deffense += deffenseForce;
                     break;
             }

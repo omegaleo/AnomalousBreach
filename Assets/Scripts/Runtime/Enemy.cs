@@ -6,48 +6,45 @@ using Enums;
 using Models;
 using OmegaLeo.Toolbox.Runtime.Models;
 using UnityEngine;
+using UnityEngine.UI;
+using Random = System.Random;
 
-public class Player : InstancedBehavior<Player>
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject _image;
     
     public PlayerSide Side;
 
-    [SerializeField] private Node _workingOn; // The node our player is currently protecting/attacking
+    [SerializeField] private Node _workingOn; // The node our enemy is currently protecting/attacking
 
     // For now this will be used for both attacking and defending
     [SerializeField] private List<VectorProfficiency> _profficiencies = new List<VectorProfficiency>();
-
-    public int UpgradePoints = 0;
     
     private void Start()
     {
         var identifiers = Enum.GetValues(typeof(StatIdentifier));
-
+        Side = (Player.instance.Side == PlayerSide.Attack) ? PlayerSide.Defend : PlayerSide.Attack;
+        
         foreach (var identifier in identifiers)
         {
-            _profficiencies.Add(new VectorProfficiency((StatIdentifier)identifier));
+            var level = UnityEngine.Random.Range(0, 2);
+            _profficiencies.Add(new VectorProfficiency((StatIdentifier)identifier, level));
         }
-    }
 
-    public void LevelUpProfficiency(StatIdentifier identifier, int increase = 1) =>
-        _profficiencies.FirstOrDefault(x => x.Identifier == identifier)!.Level += increase;
+        _image.GetComponent<Image>().color = (Side == PlayerSide.Attack) ? Color.red : Color.blue;
+    }
     
     public void SetWorkingOnNode(Node node)
     {
         _workingOn = node;
         
-        GameManager.instance.NextTurn();
-        
-        RegionInfo.instance.Close();
-        
         _image.SetActive(true);
-
+        
         var workingOnRect = _workingOn.GetComponent<RectTransform>().rect;
 
         var offset = new Vector3(workingOnRect.width / 2 - 25f, workingOnRect.height / 2 - 25f, 0f);
         
-        _image.transform.localPosition = _workingOn.transform.localPosition - offset;
+        _image.transform.localPosition = _workingOn.transform.localPosition + offset;
         
         StartCoroutine(HandleEffect());
     }

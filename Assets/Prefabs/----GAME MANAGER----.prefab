@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e160838527c6c4facd85019424d52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 1629151659451210049, guid: 59d777582c66fed4396c9ba9f617df3e, type: 3}
+  _enemyParent: {fileID: 0}
+  _secondsPerWave: 60
+  MaxWaves: 10
+  _currentWave: []
   _newsMessages:
   - Ferret-Sourced Fertiliser Stocks Up
   - Nuclear Reactors Linked to Hair Loss
@@ -57,7 +62,8 @@ MonoBehaviour:
   _attackedColorAlt: {r: 0.28298017, g: 0, b: 0.49056602, a: 1}
   _defendedColorAlt: {r: 0.5764706, g: 0.54176503, b: 0, a: 1}
   WaitingForNextTurn: 1
-  CurrentTurn: 1
+  SecondsLeft: 0
+  CurrentTurn: 0
 --- !u!114 &8373070438231228628
 MonoBehaviour:
   m_ObjectHideFlags: 0

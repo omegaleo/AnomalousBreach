@@ -26,4 +26,6 @@ public class NodeManager : InstancedBehavior<NodeManager>
     public List<Vector3> GetNodePositions => _nodes.Select(x => x.transform.localPosition).ToList();
     
     public GameObject GetNode(Vector3 position) => _nodes.FirstOrDefault(x => Vector3.Distance(x.transform.localPosition, position) < 2f) ?? null;
+
+    public List<GameObject> GetNodes() => _nodes;
 }

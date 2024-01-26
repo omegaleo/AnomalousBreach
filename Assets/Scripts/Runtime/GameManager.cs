@@ -104,7 +104,7 @@ public class GameManager : InstancedBehavior<GameManager>
 
         if (nodes.Count(x => x.TakenOver) == nodes.Count())
         {
-            // Handle End of Game
+            GameOverScreen.instance.Open(Player.instance.Side == PlayerSide.Attack);
         }
         
         if (CurrentTurn < MaxWaves)
@@ -115,7 +115,7 @@ public class GameManager : InstancedBehavior<GameManager>
         }
         else
         {
-            // Handle End of Game
+            GameOverScreen.instance.Open(true);
         }
     }
 

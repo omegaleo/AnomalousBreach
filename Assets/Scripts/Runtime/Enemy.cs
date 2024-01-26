@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
         
         foreach (var identifier in identifiers)
         {
-            var level = UnityEngine.Random.Range(1, 1 + turnBoost);
+            var level = UnityEngine.Random.Range(2, 2 + turnBoost);
             _profficiencies.Add(new VectorProfficiency((StatIdentifier)identifier, level));
         }
 

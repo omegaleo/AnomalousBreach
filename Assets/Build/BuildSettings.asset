@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8838631e01449d79c379fbfbeadef5f, type: 3}
   m_Name: BuildSettings
   m_EditorClassIdentifier: 
-  itchPath: 
+  itchPath: F:/GameProjects/Itch.io Butler/AnomalousBreach
   steamPath: 
   steamDeckPath: 
   uwpPath: 
@@ -25,13 +25,13 @@ MonoBehaviour:
   itchBetaPublish: 
   demo: 0
   beta: 0
-  itch: 0
+  itch: 1
   steamDeck: 0
   dev: 0
   demoScenes: []
   releaseScenes: []
   ProjectName: Anomalous Breach
-  CompanyName: Breachy Keen(Temp)
+  CompanyName: Breachy Keen
   CompanyNameForUWP: 
   BaseBuildNumber: 0.0.1
   BundleIdentifier: com.DefaultCompany.PirateJam14Entry

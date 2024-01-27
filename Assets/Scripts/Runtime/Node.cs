@@ -132,6 +132,7 @@ public class Node : Button
         if (GetAttackedPercentage() > 100 && !_sfxPlayed)
         {
             AudioManager.instance.Play("NodeDeath");
+            _sfxPlayed = true;
         }
     }
 

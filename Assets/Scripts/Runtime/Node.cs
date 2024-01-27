@@ -129,7 +129,7 @@ public class Node : Button
         _attackedTexture.fillAmount = _attackedAmount;
         _attackedPercentageText.text = $"{GetAttackedPercentage()}%";
 
-        if (GetAttackedPercentage() > 100 && !_sfxPlayed)
+        if (GetAttackedPercentage() >= 100 && !_sfxPlayed)
         {
             AudioManager.instance.Play("NodeDeath");
             _sfxPlayed = true;
